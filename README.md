@@ -301,16 +301,15 @@ RETURN LowSalary + LowSatisfaction + HighTenure + Overtime + RecentPromotion
 ## 📸 Screenshots
 
 ### Executive Dashboardpng
-![Page 1]https://github.com/ankithaswarna/HR-Attrition-Dashboard/blob/19ac6e511ed286ad8e24e7ea23157080c960811a/Images/HR%20Attrition%20Dashboard.png
+![Page 1](Images/HR%20Attrition%20Dashboard.png)
 
 ### Demographics
-![Page 2]https://github.com/ankithaswarna/HR-Attrition-Dashboard/blob/19ac6e511ed286ad8e24e7ea23157080c960811a/Images/Demographic%20Analysis.png
+![Page 2]Images/HR%20Demographic%20Analysis.png
 
 ### Compensation
-![Page 3]https://github.com/ankithaswarna/HR-Attrition-Dashboard/blob/19ac6e511ed286ad8e24e7ea23157080c960811a/Images/Compensation%20Analysis.png
-
+![Page 3]Images/Compensation%20Analysis.png
 ### Strategy
-![Page 4]https://github.com/ankithaswarna/HR-Attrition-Dashboard/blob/19ac6e511ed286ad8e24e7ea23157080c960811a/Images/Retention%20Strategy.png
+![Page 4]Images/Retention%20Strategy.png
 
 ---
 
