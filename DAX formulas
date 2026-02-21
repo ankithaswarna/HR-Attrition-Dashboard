@@ -1,0 +1,80 @@
+## DAX Measures Created
+
+```dax
+// Basic Metrics
+TotalEmployees = COUNTROWS('HR-Employee-Attrition')
+
+TotalAttrition = 
+CALCULATE(
+    COUNTROWS('HR-Employee-Attrition'),
+    'HR-Employee-Attrition'[Attrition] = "Yes"
+)
+
+AttritionRate = DIVIDE([TotalAttrition], [TotalEmployees], 0) * 100
+
+// Salary Analysis
+AvgSalary_Active = 
+CALCULATE(
+    AVERAGE('HR-Employee-Attrition'[MonthlyIncome]),
+    'HR-Employee-Attrition'[Attrition] = "No"
+)
+
+AvgSalary_Attrition = 
+CALCULATE(
+    AVERAGE('HR-Employee-Attrition'[MonthlyIncome]),
+    'HR-Employee-Attrition'[Attrition] = "Yes"
+)
+
+// Financial Impact
+AvgReplacementCost = 
+VAR AvgAnnualSalary = [AvgMonthlyIncome] * 12
+VAR ReplacementPercent = 0.75
+RETURN AvgAnnualSalary * ReplacementPercent
+
+AttritionCost_Current = [TotalAttrition] * [AvgReplacementCost]
+
+// Risk Identification
+HighRiskCount = 
+CALCULATE(
+    COUNTROWS('HR-Employee-Attrition'),
+    'HR-Employee-Attrition'[FlightRiskScore] >= 4,
+    'HR-Employee-Attrition'[Attrition] = "No"
+)
+
+PotentialSavings = 
+VAR HighRisk = [HighRiskCount]
+VAR SuccessRate = 0.40
+RETURN HighRisk * [AvgReplacementCost] * SuccessRate
+```
+
+### Calculated Columns
+
+```dax
+// Age Groups
+AgeGroup = 
+SWITCH(TRUE(),
+    [Age] < 25, "Under 25",
+    [Age] < 35, "25-34",
+    [Age] < 45, "35-44",
+    [Age] < 55, "45-54",
+    "55+"
+)
+
+// Salary Bands
+SalaryBand = 
+SWITCH(TRUE(),
+    [MonthlyIncome] < 3000, "Low (<$3K)",
+    [MonthlyIncome] < 6000, "Medium ($3-6K)",
+    [MonthlyIncome] < 10000, "High ($6-10K)",
+    "Very High (>$10K)"
+)
+
+// Flight Risk Score
+FlightRiskScore = 
+VAR LowSalary = IF([MonthlyIncome] < 3000, 2, 0)
+VAR LowSatisfaction = IF([JobSatisfaction] <= 2, 2, 0)
+VAR HighTenure = IF([YearsAtCompany] >= 5, -1, 0)
+VAR Overtime = IF([OverTime] = "Yes", 1, 0)
+VAR RecentPromotion = IF([YearsSinceLastPromotion] > 3, 1, 0)
+RETURN LowSalary + LowSatisfaction + HighTenure + Overtime + RecentPromotion
+```
