@@ -300,16 +300,17 @@ RETURN LowSalary + LowSatisfaction + HighTenure + Overtime + RecentPromotion
 
 ## 📸 Screenshots
 
-### Executive Dashboardpng
+### Executive Dashboard
 ![Page 1](Images/HR%20Attrition%20Dashboard.png)
 
 ### Demographics
-![Page 2]Images/HR%20Demographic%20Analysis.png
+![Page 2](Images/HR%20Demographic%20Analysis.png)
 
 ### Compensation
-![Page 3]Images/Compensation%20Analysis.png
+![Page 3](Images/Compensation%20Analysis.png)
+
 ### Strategy
-![Page 4]Images/Retention%20Strategy.png
+![Page 4](Images/Retention%20Strategy.png)Images/Retention%20Strategy.png
 
 ---
 
